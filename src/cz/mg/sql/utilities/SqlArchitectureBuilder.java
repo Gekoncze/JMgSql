@@ -1,32 +1,12 @@
-package cz.mg.sql;
+package cz.mg.sql.utilities;
 
 import cz.mg.sql.architecture.SqlCreateTableBuilder;
 import cz.mg.sql.architecture.SqlDeleteTableBuilder;
 import cz.mg.sql.architecture.SqlReadTableBuilder;
 import cz.mg.sql.architecture.SqlUpdateTableBuilder;
-import cz.mg.sql.data.SqlCreateBuilder;
-import cz.mg.sql.data.SqlDeleteBuilder;
-import cz.mg.sql.data.SqlReadBuilder;
-import cz.mg.sql.data.SqlUpdateBuilder;
 
 
-public class SqlBuilder {
-    public SqlCreateBuilder create(String table){
-        return new SqlDataBuilder().create(table);
-    }
-
-    public SqlReadBuilder read(String table){
-        return new SqlReadBuilder().read(table);
-    }
-
-    public SqlUpdateBuilder update(String table){
-        return new SqlUpdateBuilder().update(table);
-    }
-
-    public SqlDeleteBuilder delete(String table){
-        return new SqlDeleteBuilder().delete(table);
-    }
-
+public class SqlArchitectureBuilder {
     public SqlCreateTableBuilder createTable(String table){
         return new SqlCreateTableBuilder().createTable(table);
     }

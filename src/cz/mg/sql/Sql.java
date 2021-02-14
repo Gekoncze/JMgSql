@@ -2,12 +2,19 @@ package cz.mg.sql;
 
 import cz.mg.collections.list.List;
 
+import static cz.mg.sql.SqlValidator.validateBinds;
+
 
 public class Sql {
     private final String text;
-    private final List<Object> binds;
+    private final List<SqlBind> binds;
 
-    public Sql(String text, List<Object> binds) {
+    public Sql(String text){
+        this(text, new List<>());
+    }
+
+    public Sql(String text, List<SqlBind> binds) {
+        validateBinds(text, binds);
         this.text = text;
         this.binds = binds;
     }
@@ -16,7 +23,7 @@ public class Sql {
         return text;
     }
 
-    public List<Object> getBinds() {
+    public List<SqlBind> getBinds() {
         return binds;
     }
 }
