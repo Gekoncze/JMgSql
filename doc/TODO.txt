@@ -2,9 +2,9 @@
 ...
 
 ##### NOW #####---------------------------------------------------------------------------------------------------------
-add sql insert builder
-add sql update builder
-add sql delete builder
+add sql create table
+add sql alter table
+add sql drop table
 
 ##### SOON #####--------------------------------------------------------------------------------------------------------
 implement sql executor

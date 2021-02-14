@@ -3,17 +3,46 @@ package cz.mg.sql;
 
 import cz.mg.sql.block.select.Order;
 import cz.mg.sql.data.SqlCreateBuilder;
+import cz.mg.sql.data.SqlDeleteBuilder;
 import cz.mg.sql.data.SqlReadBuilder;
+import cz.mg.sql.data.SqlUpdateBuilder;
+import cz.mg.sql.utilities.SqlBaseBuilder;
 
 
 public class VisualTest {
     public static void main(String[] args) {
-        SqlCreateBuilder create = new SqlBuilder()
+        testCreate();
+        separator();
+        testRead();
+        separator();
+        testUpdate();
+        separator();
+        testDelete();
+    }
+
+    private static void test(SqlBaseBuilder builder){
+        System.out.println(builder.build(Formatting.SINGLE_LINE).getText());
+        System.out.println();
+        System.out.println(builder.build(Formatting.MULTI_LINE).getText());
+    }
+
+    private static void separator(){
+        System.out.println();
+        System.out.println("--------------------------------------------------");
+        System.out.println();
+    }
+
+    private static void testCreate(){
+        SqlCreateBuilder builder = new SqlBuilder()
             .create("FooBar")
             .column("foo")
             .column("bar");
 
-        SqlReadBuilder read = new SqlReadBuilder()
+        test(builder);
+    }
+
+    private static void testRead(){
+        SqlReadBuilder builder = new SqlReadBuilder()
             .read("FooBar", "foobar")
             .column("foo", "f")
             .column("bar", "b")
@@ -27,16 +56,26 @@ public class VisualTest {
             .orderBy("SUM(price)", Order.ASCENDING)
             .orderBy("MAX(price)", Order.DESCENDING);
 
-        System.out.println(create.build(Formatting.SINGLE_LINE).getText());
-        System.out.println("--");
-        System.out.println(create.build(Formatting.MULTI_LINE).getText());
-        System.out.println("--");
+        test(builder);
+    }
 
-        System.out.println();
+    private static void testUpdate(){
+        SqlUpdateBuilder builder = new SqlUpdateBuilder()
+            .update("FooBar")
+            .column("foo")
+            .column("bar")
+            .where("foo = 1")
+            .where("bar = 1");
 
-        System.out.println(read.build(Formatting.SINGLE_LINE).getText());
-        System.out.println("--");
-        System.out.println(read.build(Formatting.MULTI_LINE).getText());
-        System.out.println("--");
+        test(builder);
+    }
+
+    private static void testDelete(){
+        SqlDeleteBuilder builder = new SqlDeleteBuilder()
+            .delete("FooBar")
+            .where("foo = 1")
+            .where("bar = 1");
+
+        test(builder);
     }
 }

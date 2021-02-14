@@ -1,4 +1,4 @@
-package cz.mg.sql;
+package cz.mg.sql.utilities;
 
 import cz.mg.sql.data.SqlCreateBuilder;
 import cz.mg.sql.data.SqlDeleteBuilder;

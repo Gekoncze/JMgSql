@@ -1,7 +1,8 @@
-package cz.mg.sql;
+package cz.mg.sql.utilities;
 
 import cz.mg.collections.Collection;
 import cz.mg.collections.array.Array;
+import cz.mg.sql.SqlBind;
 
 
 public class SqlValidator {

@@ -8,6 +8,7 @@ import cz.mg.sql.data.SqlCreateBuilder;
 import cz.mg.sql.data.SqlDeleteBuilder;
 import cz.mg.sql.data.SqlReadBuilder;
 import cz.mg.sql.data.SqlUpdateBuilder;
+import cz.mg.sql.utilities.SqlDataBuilder;
 
 
 public class SqlBuilder {
