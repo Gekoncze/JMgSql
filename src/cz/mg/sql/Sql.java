@@ -2,7 +2,7 @@ package cz.mg.sql;
 
 import cz.mg.collections.list.List;
 
-import static cz.mg.sql.utilities.SqlValidator.validateBinds;
+import static cz.mg.sql.builder.utilities.SqlValidator.validateBinds;
 
 
 public class Sql {
