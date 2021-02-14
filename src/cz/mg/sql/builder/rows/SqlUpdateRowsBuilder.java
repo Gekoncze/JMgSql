@@ -25,6 +25,13 @@ public class SqlUpdateRowsBuilder extends SqlBaseBuilder {
         return this;
     }
 
+    public SqlUpdateRowsBuilder columns(String... columns){
+        for(String column : columns){
+            column(column);
+        }
+        return this;
+    }
+
     public SqlUpdateRowsBuilder where(String condition, SqlBind... binds){
         if(whereBlock == null){
             getBlocks().addLast(whereBlock = new SqlWhereBlockBuilder());

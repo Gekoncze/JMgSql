@@ -43,6 +43,13 @@ public class SqlReadRowsBuilder extends SqlBaseBuilder {
         return this;
     }
 
+    public SqlReadRowsBuilder columns(String... columns){
+        for(String column : columns){
+            column(column);
+        }
+        return this;
+    }
+
     public SqlReadRowsBuilder join(String table, String condition, SqlBind... binds){
         getBlocks().addLast(new SqlJoinBlockBuilder(table, condition, binds));
         return this;

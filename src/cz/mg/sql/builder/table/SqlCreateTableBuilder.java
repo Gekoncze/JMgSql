@@ -17,8 +17,16 @@ public class SqlCreateTableBuilder extends SqlBaseBuilder {
         return this;
     }
 
-    public SqlCreateTableBuilder column(String name, String datatype){
-        createTableBlock.addColumn(name + " " + datatype);
+    public SqlCreateTableBuilder column(String name, String type){
+        createTableBlock.addColumn(name + " " + type);
+        return this;
+    }
+
+    public SqlCreateTableBuilder columns(String[] names, String[] types){
+        if(names.length != types.length) throw new IllegalArgumentException();
+        for(int i = 0; i < names.length; i++){
+            column(names[i], types[i]);
+        }
         return this;
     }
 

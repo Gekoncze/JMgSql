@@ -27,6 +27,13 @@ public class SqlCreateRowsBuilder extends SqlBaseBuilder {
         return this;
     }
 
+    public SqlCreateRowsBuilder columns(String... columns){
+        for(String column : columns){
+            column(column);
+        }
+        return this;
+    }
+
     @Override
     public Sql build(Formatting formatting) {
         assertOnce(SqlInsertIntoBlockBuilder.class);
