@@ -1,4 +1,4 @@
-package cz.mg.sql.block.update;
+package cz.mg.sql.blocks.rows.update;
 
 import cz.mg.sql.utilities.SqlBlockBuilder;
 import cz.mg.sql.utilities.SqlColumnBuilder;

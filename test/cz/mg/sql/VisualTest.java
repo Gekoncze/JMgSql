@@ -1,23 +1,27 @@
 package cz.mg.sql;
 
-
-import cz.mg.sql.block.select.Order;
-import cz.mg.sql.data.SqlCreateBuilder;
-import cz.mg.sql.data.SqlDeleteBuilder;
-import cz.mg.sql.data.SqlReadBuilder;
-import cz.mg.sql.data.SqlUpdateBuilder;
+import cz.mg.sql.blocks.rows.read.Order;
+import cz.mg.sql.rows.SqlReadRowsBuilder;
 import cz.mg.sql.utilities.SqlBaseBuilder;
 
 
 public class VisualTest {
     public static void main(String[] args) {
-        testCreate();
-        separator();
-        testRead();
-        separator();
-        testUpdate();
-        separator();
-        testDelete();
+        testAll(
+            testCreateRows(),
+            testReadRows(),
+            testUpdateRows(),
+            testDeleteRows(),
+            testCreateTable(),
+            testDeleteTable()
+        );
+    }
+
+    private static void testAll(SqlBaseBuilder... builders){
+        for(SqlBaseBuilder builder : builders){
+            test(builder);
+            if(builder != builders[builders.length - 1]) separator();
+        }
     }
 
     private static void test(SqlBaseBuilder builder){
@@ -32,18 +36,16 @@ public class VisualTest {
         System.out.println();
     }
 
-    private static void testCreate(){
-        SqlCreateBuilder builder = new SqlBuilder()
-            .create("FooBar")
+    private static SqlBaseBuilder testCreateRows(){
+        return new SqlBuilder()
+            .createRows("FooBar")
             .column("foo")
             .column("bar");
-
-        test(builder);
     }
 
-    private static void testRead(){
-        SqlReadBuilder builder = new SqlReadBuilder()
-            .read("FooBar", "foobar")
+    private static SqlBaseBuilder testReadRows(){
+        return new SqlReadRowsBuilder()
+            .readRows("FooBar", "foobar")
             .column("foo", "f")
             .column("bar", "b")
             .column("SUM(price)")
@@ -55,27 +57,33 @@ public class VisualTest {
             .having("SUM(price) > 0")
             .orderBy("SUM(price)", Order.ASCENDING)
             .orderBy("MAX(price)", Order.DESCENDING);
-
-        test(builder);
     }
 
-    private static void testUpdate(){
-        SqlUpdateBuilder builder = new SqlUpdateBuilder()
-            .update("FooBar")
+    private static SqlBaseBuilder testUpdateRows(){
+        return new SqlBuilder()
+            .updateRows("FooBar")
             .column("foo")
             .column("bar")
             .where("foo = 1")
             .where("bar = 1");
-
-        test(builder);
     }
 
-    private static void testDelete(){
-        SqlDeleteBuilder builder = new SqlDeleteBuilder()
-            .delete("FooBar")
+    private static SqlBaseBuilder testDeleteRows(){
+        return new SqlBuilder()
+            .deleteRows("FooBar")
             .where("foo = 1")
             .where("bar = 1");
+    }
 
-        test(builder);
+    private static SqlBaseBuilder testCreateTable(){
+        return new SqlBuilder()
+            .createTable("FooBar")
+            .column("foo", "NUMBER")
+            .column("bar", "NUMBER");
+    }
+
+    private static SqlBaseBuilder testDeleteTable(){
+        return new SqlBuilder()
+            .deleteTable("FooBar");
     }
 }

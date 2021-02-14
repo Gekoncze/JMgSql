@@ -1,4 +1,4 @@
-package cz.mg.sql.block.select;
+package cz.mg.sql.blocks.rows.read;
 
 import cz.mg.sql.utilities.SqlBlockBuilder;
 import cz.mg.sql.utilities.SqlColumnBuilder;

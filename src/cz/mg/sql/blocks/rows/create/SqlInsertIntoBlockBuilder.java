@@ -1,4 +1,4 @@
-package cz.mg.sql.block.insert;
+package cz.mg.sql.blocks.rows.create;
 
 import cz.mg.sql.utilities.SqlBlockBuilder;
 import cz.mg.sql.utilities.SqlColumnBuilder;

@@ -1,23 +1,23 @@
-package cz.mg.sql.data;
+package cz.mg.sql.rows;
 
 import cz.mg.sql.Formatting;
 import cz.mg.sql.Sql;
 import cz.mg.sql.SqlBind;
-import cz.mg.sql.block.delete.SqlDeleteBlockBuilder;
-import cz.mg.sql.block.select.SqlWhereBlockBuilder;
+import cz.mg.sql.blocks.rows.delete.SqlDeleteBlockBuilder;
+import cz.mg.sql.blocks.rows.read.SqlWhereBlockBuilder;
 import cz.mg.sql.utilities.SqlBaseBuilder;
 
 
-public class SqlDeleteBuilder extends SqlBaseBuilder {
+public class SqlDeleteRowsBuilder extends SqlBaseBuilder {
     private SqlDeleteBlockBuilder deleteBlock;
     private SqlWhereBlockBuilder whereBlock;
 
-    public SqlDeleteBuilder delete(String table) {
+    public SqlDeleteRowsBuilder deleteRows(String table) {
         getBlocks().addLast(deleteBlock = new SqlDeleteBlockBuilder(table));
         return this;
     }
 
-    public SqlDeleteBuilder where(String condition, SqlBind... binds){
+    public SqlDeleteRowsBuilder where(String condition, SqlBind... binds){
         if(whereBlock == null){
             getBlocks().addLast(whereBlock = new SqlWhereBlockBuilder());
         }

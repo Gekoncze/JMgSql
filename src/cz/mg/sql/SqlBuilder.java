@@ -1,46 +1,37 @@
 package cz.mg.sql;
 
-import cz.mg.sql.architecture.SqlCreateTableBuilder;
-import cz.mg.sql.architecture.SqlDeleteTableBuilder;
-import cz.mg.sql.architecture.SqlReadTableBuilder;
-import cz.mg.sql.architecture.SqlUpdateTableBuilder;
-import cz.mg.sql.data.SqlCreateBuilder;
-import cz.mg.sql.data.SqlDeleteBuilder;
-import cz.mg.sql.data.SqlReadBuilder;
-import cz.mg.sql.data.SqlUpdateBuilder;
-import cz.mg.sql.utilities.SqlDataBuilder;
+import cz.mg.sql.table.SqlCreateTableBuilder;
+import cz.mg.sql.table.SqlDeleteTableBuilder;
+import cz.mg.sql.rows.SqlCreateRowsBuilder;
+import cz.mg.sql.rows.SqlDeleteRowsBuilder;
+import cz.mg.sql.rows.SqlReadRowsBuilder;
+import cz.mg.sql.rows.SqlUpdateRowsBuilder;
+import cz.mg.sql.utilities.SqlRowsBuilder;
+import cz.mg.sql.utilities.SqlTableBuilder;
 
 
 public class SqlBuilder {
-    public SqlCreateBuilder create(String table){
-        return new SqlDataBuilder().create(table);
+    public SqlCreateRowsBuilder createRows(String table){
+        return new SqlRowsBuilder().createRows(table);
     }
 
-    public SqlReadBuilder read(String table){
-        return new SqlReadBuilder().read(table);
+    public SqlReadRowsBuilder readRows(String table){
+        return new SqlRowsBuilder().readRows(table);
     }
 
-    public SqlUpdateBuilder update(String table){
-        return new SqlUpdateBuilder().update(table);
+    public SqlUpdateRowsBuilder updateRows(String table){
+        return new SqlRowsBuilder().updateRows(table);
     }
 
-    public SqlDeleteBuilder delete(String table){
-        return new SqlDeleteBuilder().delete(table);
+    public SqlDeleteRowsBuilder deleteRows(String table){
+        return new SqlRowsBuilder().deleteRows(table);
     }
 
     public SqlCreateTableBuilder createTable(String table){
-        return new SqlCreateTableBuilder().createTable(table);
-    }
-
-    public SqlReadTableBuilder readTable(String table){
-        return new SqlReadTableBuilder().readTable(table);
-    }
-
-    public SqlUpdateTableBuilder updateTable(String table){
-        return new SqlUpdateTableBuilder().updateTable(table);
+        return new SqlTableBuilder().createTable(table);
     }
 
     public SqlDeleteTableBuilder deleteTable(String table){
-        return new SqlDeleteTableBuilder().deleteTable(table);
+        return new SqlTableBuilder().deleteTable(table);
     }
 }

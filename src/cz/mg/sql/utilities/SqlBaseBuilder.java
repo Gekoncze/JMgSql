@@ -65,7 +65,8 @@ public abstract class SqlBaseBuilder {
         }
     }
 
-    protected void assertOrder(Class<? extends SqlBlockBuilder>... classes){
+    @SafeVarargs
+    protected final void assertOrder(Class<? extends SqlBlockBuilder>... classes){
         Array<Class<? extends SqlBlockBuilder>> classArray = new Array<>(classes);
         Iterator<Class<? extends SqlBlockBuilder>> classIterator = classArray.iterator();
         Class<? extends SqlBlockBuilder> expectedClass = classIterator.next();

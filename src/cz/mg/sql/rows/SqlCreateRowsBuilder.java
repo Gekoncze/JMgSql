@@ -1,27 +1,27 @@
-package cz.mg.sql.data;
+package cz.mg.sql.rows;
 
 import cz.mg.sql.Formatting;
 import cz.mg.sql.Sql;
 import cz.mg.sql.SqlBind;
-import cz.mg.sql.block.insert.SqlInsertIntoBlockBuilder;
-import cz.mg.sql.block.insert.SqlValuesBlockBuilder;
+import cz.mg.sql.blocks.rows.create.SqlInsertIntoBlockBuilder;
+import cz.mg.sql.blocks.rows.create.SqlValuesBlockBuilder;
 import cz.mg.sql.utilities.SqlBaseBuilder;
 
 
-public class SqlCreateBuilder extends SqlBaseBuilder {
+public class SqlCreateRowsBuilder extends SqlBaseBuilder {
     private SqlInsertIntoBlockBuilder insertBlock;
     private SqlValuesBlockBuilder valuesBlock;
 
-    public SqlCreateBuilder() {
+    public SqlCreateRowsBuilder() {
     }
 
-    public SqlCreateBuilder create(String table) {
+    public SqlCreateRowsBuilder createRows(String table) {
         getBlocks().addLast(insertBlock = new SqlInsertIntoBlockBuilder(table));
         getBlocks().addLast(valuesBlock = new SqlValuesBlockBuilder());
         return this;
     }
 
-    public SqlCreateBuilder column(String column){
+    public SqlCreateRowsBuilder column(String column){
         insertBlock.addColumn(column);
         valuesBlock.addColumn("?", new SqlBind(column));
         return this;

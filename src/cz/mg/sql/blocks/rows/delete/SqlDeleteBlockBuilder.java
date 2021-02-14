@@ -1,4 +1,4 @@
-package cz.mg.sql.block.delete;
+package cz.mg.sql.blocks.rows.delete;
 
 import cz.mg.sql.utilities.SqlBlockBuilder;
 
