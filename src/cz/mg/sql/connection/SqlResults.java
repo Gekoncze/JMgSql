@@ -19,6 +19,11 @@ public class SqlResults {
         return results;
     }
 
+    public SqlResult getSingleResult(){
+        if(results.count() != 1) throw new IllegalStateException("Expected 1 row, but got " + results.count() + " rows.");
+        return results.getFirst();
+    }
+
     public static SqlResults toResults(ResultSet resultSet) throws SQLException {
         List<SqlResult> results = new List<>();
 
