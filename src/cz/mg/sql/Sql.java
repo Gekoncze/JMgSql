@@ -26,4 +26,12 @@ public class Sql {
     public List<SqlBind> getBinds() {
         return binds;
     }
+
+    public void setBind(String id, Object object){
+        for(SqlBind bind : binds){
+            if(bind.getId() == id){
+                bind.setObject(object);
+            }
+        }
+    }
 }

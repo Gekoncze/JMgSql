@@ -2,23 +2,27 @@ package cz.mg.sql;
 
 public class SqlBind {
     private final String id;
-    private Object bind;
+    private Object object;
 
-    public SqlBind(String id, Object bind) {
+    public SqlBind(String id, Object object) {
         this.id = id;
-        this.bind = bind;
+        this.object = object;
     }
 
     public SqlBind(String id) {
         this.id = id;
-        this.bind = null;
+        this.object = null;
     }
 
     public String getId() {
         return id;
     }
 
-    public Object getBind() {
-        return bind;
+    public Object getObject() {
+        return object;
+    }
+
+    public void setObject(Object object) {
+        this.object = object;
     }
 }

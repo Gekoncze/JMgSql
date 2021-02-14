@@ -4,7 +4,6 @@ import cz.mg.sql.builder.Formatting;
 import cz.mg.sql.Sql;
 import cz.mg.sql.SqlBind;
 import cz.mg.sql.builder.blocks.rows.read.*;
-import cz.mg.sql.builder.builder.blocks.rows.read.*;
 import cz.mg.sql.builder.utilities.SqlBlockBuilder;
 import cz.mg.sql.builder.utilities.SqlBaseBuilder;
 
