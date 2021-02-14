@@ -8,6 +8,7 @@ public interface SqlConnection extends AutoCloseable {
     void begin();
     void commit();
     void rollback();
-    void execute(Sql sql);
+    void executeDdl(Sql sql);
+    void executeDml(Sql sql);
     SqlResults executeQuery(Sql sql);
 }

@@ -91,7 +91,17 @@ public class SqliteConnection implements SqlConnection {
     }
 
     @Override
-    public void execute(Sql sql){
+    public void executeDdl(Sql sql) {
+        assertNotTransaction();
+        try (PreparedStatement statement = createStatement(sql)) {
+            statement.execute();
+        } catch (SQLException e) {
+            throw new SqlConnectionException(e);
+        }
+    }
+
+    @Override
+    public void executeDml(Sql sql){
         assertTransaction();
         try (PreparedStatement statement = createStatement(sql)) {
             statement.execute();
@@ -126,6 +136,11 @@ public class SqliteConnection implements SqlConnection {
 
     private void assertTransaction(){
         assertConnected();
-        if(!transactionInProgress) throw new IllegalStateException("Transaction was not started.");
+        if(!transactionInProgress) throw new IllegalStateException("Expected transaction in progress.");
+    }
+
+    private void assertNotTransaction(){
+        assertConnected();
+        if(transactionInProgress) throw new IllegalStateException("Unexpected tranaction in progress.");
     }
 }
