@@ -1,6 +1,6 @@
 package cz.mg.sql.entities.types;
 
-public class SQLite {
+public class SqliteTypes {
     public static final String TEXT = "TEXT";
     public static final String NUMERIC = "NUMERIC";
     public static final String INTEGER = "INTEGER";
