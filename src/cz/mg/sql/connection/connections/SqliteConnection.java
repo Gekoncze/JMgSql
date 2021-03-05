@@ -124,7 +124,7 @@ public class SqliteConnection implements SqlConnection {
         PreparedStatement statement = connection.prepareStatement(sql.getText());
         int i = 0;
         for(SqlBind bind : sql.getBinds()){
-            statement.setObject(i, bind);
+            statement.setObject(i, bind.getObject());
             i++;
         }
         return statement;
